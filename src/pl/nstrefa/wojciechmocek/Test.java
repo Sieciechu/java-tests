@@ -13,6 +13,7 @@ public class Test {
         assert 2 == digitSum.sum(2);
         assert 3 == digitSum.sum(21);
         assert 8 == digitSum.sum(215);
+        assert 17 == digitSum.sum(2159);
         assert 0 == digitSum.sum(0);
         assert -1 == digitSum.sum(-1);
         assert -2 == digitSum.sum(-2);

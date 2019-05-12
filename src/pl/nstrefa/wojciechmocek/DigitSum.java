@@ -7,14 +7,14 @@ class DigitSum {
             return number;
         }
 
-        int sum = 0;
-        for (int remainder = 1, divider = (number>=0 ? 10 : -10); remainder != 0; ) {
-            remainder = number % divider;
-            sum += remainder;
+        int digitSum = 0;
+        for (int digit, divider = (number>=0 ? 10 : -10); number != 0; ) {
+            digit = number % divider;
+            digitSum += digit;
             number /= 10;
         }
 
-        return sum;
+        return digitSum;
 
     }
 }
