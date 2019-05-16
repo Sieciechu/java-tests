@@ -1,11 +1,9 @@
 package pl.nstrefa.wojciechmocek;
 
+import pl.nstrefa.wojciechmocek.bank.Bank;
+
 public class BankBranchCustomerApp {
     public static void main(String[] args) {
-        System.out.println("asdadss");
-    }
-
-    public boolean fun() {
-        return true;
+        Bank bank = new Bank();
     }
 }

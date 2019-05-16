@@ -1,10 +1,11 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.bank;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BankTest {
     @Test

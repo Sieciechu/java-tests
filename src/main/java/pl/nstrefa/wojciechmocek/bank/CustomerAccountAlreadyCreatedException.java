@@ -1,9 +1,9 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.bank;
 
 public class CustomerAccountAlreadyCreatedException extends Exception {
     private final String customerName;
 
-    public CustomerAccountAlreadyCreatedException(Customer customer) {
+    CustomerAccountAlreadyCreatedException(Customer customer) {
         this.customerName = customer.toString();
     }
 }

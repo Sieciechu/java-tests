@@ -6,9 +6,4 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BankBranchCustomerAppTest {
 
-    @Test
-    public void testFunResturnsTrue() {
-        var app = new BankBranchCustomerApp();
-        assertTrue(app.fun());
-    }
 }

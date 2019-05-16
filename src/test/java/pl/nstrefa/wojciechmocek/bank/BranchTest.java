@@ -1,8 +1,9 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.bank;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BranchTest {
 

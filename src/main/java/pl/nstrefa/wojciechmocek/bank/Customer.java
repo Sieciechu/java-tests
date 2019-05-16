@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.bank;
 
 import lombok.NonNull;
 
@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Objects;
 
 
-final public class Customer {
+final class Customer {
 
     private String name;
     private List<Double> transactions;
 
-    public Customer(@NonNull String name) {
+    Customer(@NonNull String name) {
         this.name = name;
         transactions = new ArrayList<>();
     }
