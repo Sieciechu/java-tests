@@ -6,6 +6,6 @@ public class BankBranchCustomerApp {
     }
 
     public boolean fun() {
-        return false;
+        return true;
     }
 }
