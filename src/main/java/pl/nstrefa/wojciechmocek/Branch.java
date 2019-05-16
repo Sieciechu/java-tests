@@ -10,8 +10,10 @@ class Branch {
         return new ArrayList<>(customers);
     }
 
-    void addNewCustomer(Customer c) {
-
+    void assignCustomer(Customer c) {
+        if (!customers.contains(c)) {
+            customers.add(c);
+        }
     }
 
     void addTransactionToCustomer(Customer customer, double transaction) {
