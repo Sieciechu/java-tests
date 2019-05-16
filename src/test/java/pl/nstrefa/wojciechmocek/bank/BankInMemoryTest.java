@@ -7,12 +7,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class BankTest {
+class BankInMemoryTest {
     @Test
     void whenCreateBranchThenItIsCreated() {
 
         // given
-        Bank bank = new Bank();
+        BankInMemory bank = new BankInMemory();
         assertEquals(0, bank.getBranchList().size());
 
         // when
@@ -27,7 +27,7 @@ class BankTest {
     @Test
     void whenCreateNewAccountThenItIsCreated() throws CustomerAccountAlreadyCreatedException, BranchCustomerNotExistsException {
         // given
-        Bank bank = new Bank();
+        BankInMemory bank = new BankInMemory();
         bank.createBranch("PL");
 
         // when
@@ -41,7 +41,7 @@ class BankTest {
     @Test
     void itShouldBeNotPossibleToCreateAccountMoreThanOnceForSameCustomer() {
         // given
-        Bank bank = new Bank();
+        BankInMemory bank = new BankInMemory();
         bank.createBranch("PL");
 
         // when-then
@@ -60,7 +60,7 @@ class BankTest {
             throws CustomerAccountAlreadyCreatedException, BranchCustomerNotExistsException {
 
         // given
-        Bank bank = new Bank();
+        BankInMemory bank = new BankInMemory();
         bank.createBranch("PL");
         bank.createAccount("PL", "John", 123.16);
         assertEquals(1, bank.getCustomerTransactions("PL", "John").size());
@@ -78,7 +78,7 @@ class BankTest {
     @Test
     void itShouldBeNotPossibleToAddTransactionForNonExistingCustomer() throws CustomerAccountAlreadyCreatedException {
         // given
-        Bank bank = new Bank();
+        BankInMemory bank = new BankInMemory();
         bank.createBranch("PL");
         bank.createAccount("PL", "John", 123.16);
 

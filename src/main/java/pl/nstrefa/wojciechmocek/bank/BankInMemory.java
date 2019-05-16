@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Bank {
+public class BankInMemory {
     private Map<String, Branch> branchList = new HashMap<>();
 
     public void createBranch(String branchName) {

@@ -1,9 +1,9 @@
 package pl.nstrefa.wojciechmocek;
 
-import pl.nstrefa.wojciechmocek.bank.Bank;
+import pl.nstrefa.wojciechmocek.bank.BankInMemory;
 
 public class BankBranchCustomerApp {
     public static void main(String[] args) {
-        Bank bank = new Bank();
+        BankInMemory bank = new BankInMemory();
     }
 }
