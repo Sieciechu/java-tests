@@ -10,7 +10,7 @@ class BranchTest {
     void createAccountShouldAddHimToCustomerList() throws CustomerAccountAlreadyCreatedException {
 
         // given
-        Branch branch = new Branch();
+        Branch branch = new Branch("some name");
         assertEquals(0, branch.getCustomers().size());
 
         // when
@@ -24,7 +24,7 @@ class BranchTest {
     void itShouldNotBePossibleToCreateNewAccountsForSameCustomer() throws CustomerAccountAlreadyCreatedException {
 
         // given
-        Branch branch = new Branch();
+        Branch branch = new Branch("some name");
         assertEquals(0, branch.getCustomers().size());
 
         // when-then
@@ -43,7 +43,7 @@ class BranchTest {
             throws BranchCustomerNotExistsException, CustomerAccountAlreadyCreatedException {
 
         // given
-        Branch branch = new Branch();
+        Branch branch = new Branch("some name");
         branch.createAccount("John", 1.1);
 
         assertEquals(1, branch.getCustomerTransactions("John").size());
@@ -61,7 +61,7 @@ class BranchTest {
             throws CustomerAccountAlreadyCreatedException, BranchCustomerNotExistsException {
 
         // given
-        Branch branch = new Branch();
+        Branch branch = new Branch("some name");
         branch.createAccount("John", 1.1);
 
         assertEquals(1, branch.getCustomerTransactions("John").size());

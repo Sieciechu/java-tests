@@ -1,12 +1,23 @@
 package pl.nstrefa.wojciechmocek;
 
+import lombok.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 class Branch {
+    private final String name;
     private List<Customer> customers = new ArrayList<>();
 
-    public List<Customer> getCustomers() {
+    Branch(@NonNull String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    List<Customer> getCustomers() {
         return new ArrayList<>(customers);
     }
 
