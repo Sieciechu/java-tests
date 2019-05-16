@@ -1,16 +1,32 @@
 package pl.nstrefa.wojciechmocek;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Bank {
-    private List<Branch> branchList = new ArrayList<>();
+    private Map<String, Branch> branchList = new HashMap<>();
 
     public void createBranch(String branchName) {
-        branchList.add(new Branch(branchName));
+        branchList.put(branchName, new Branch(branchName));
     }
 
     List<Branch> getBranchList() {
-        return branchList;
+        return new ArrayList<>(branchList.values());
+    }
+
+    public void createAccount(String branchName, String customerName, double transaction)
+            throws CustomerAccountAlreadyCreatedException {
+
+        branchList.get(branchName).createAccount(customerName, transaction);
+    }
+
+    public List<Double> getCustomerTransactions(String branchName, String customerName) throws BranchCustomerNotExistsException {
+        return branchList.get(branchName).getCustomerTransactions(customerName);
+    }
+
+    public void addTransaction(String branchName, String customerName, double transaction) throws BranchCustomerNotExistsException {
+        branchList.get(branchName).addTransactionToCustomer(customerName, transaction);
     }
 }
