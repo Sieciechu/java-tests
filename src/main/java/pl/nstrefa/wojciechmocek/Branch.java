@@ -10,27 +10,33 @@ class Branch {
         return new ArrayList<>(customers);
     }
 
-    void assignCustomer(Customer c) {
-        if (!customers.contains(c)) {
-            customers.add(c);
+    void createAccount(String customerName, double transaction) throws CustomerAccountAlreadyCreatedException {
+        Customer branchCustomer = new Customer(customerName);
+        branchCustomer.addTransaction(transaction);
+
+        if (customers.contains(branchCustomer)) {
+            throw new CustomerAccountAlreadyCreatedException(branchCustomer);
         }
+
+        customers.add(branchCustomer);
     }
 
-    void addTransactionToCustomer(Customer customer, double transaction) throws BranchCustomerNotExists {
-        getCustomer(customer).addTransaction(transaction);
+    void addTransactionToCustomer(String customerName, double transaction) throws BranchCustomerNotExistsException {
+        getCustomer(customerName).addTransaction(transaction);
     }
 
-    private Customer getCustomer(Customer customer) throws BranchCustomerNotExists {
+    private Customer getCustomer(String customerName) throws BranchCustomerNotExistsException {
+        Customer customer = new Customer(customerName);
         int index = customers.indexOf(customer);
 
         if (-1 == index) {
-            throw new BranchCustomerNotExists(customer.toString());
+            throw new BranchCustomerNotExistsException(customer);
         }
 
         return customers.get(index);
     }
 
-    Customer getCustomerData(Customer customer) throws BranchCustomerNotExists {
-        return getCustomer(customer).makeCopy();
+    List<Double> getCustomerTransactions(String customerName) throws BranchCustomerNotExistsException {
+        return getCustomer(customerName).getTransactions();
     }
 }

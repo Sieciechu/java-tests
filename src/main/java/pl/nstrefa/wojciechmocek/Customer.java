@@ -42,10 +42,4 @@ final public class Customer {
     List<Double> getTransactions() {
         return new ArrayList<>(transactions);
     }
-
-    Customer makeCopy() {
-        Customer copy = new Customer(this.name);
-        copy.transactions = this.getTransactions();
-        return copy;
-    }
 }
