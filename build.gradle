@@ -12,6 +12,8 @@ plugins {
 
     // Apply the application plugin to add support for building an application
     id 'application'
+
+    id "io.freefair.lombok" version "3.5.1"
 }
 
 // Define the main class for the application
@@ -28,8 +30,6 @@ repositories {
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     implementation 'com.google.guava:guava:27.0.1-jre'
-
-    compile 'org.projectlombok:lombok-utils:1.18.8'
 
     // Use JUnit test framework
 //    compile 'org.junit.jupiter:junit-jupiter:5.5.0-M1'
