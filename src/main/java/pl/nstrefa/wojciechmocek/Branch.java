@@ -16,7 +16,21 @@ class Branch {
         }
     }
 
-    void addTransactionToCustomer(Customer customer, double transaction) {
+    void addTransactionToCustomer(Customer customer, double transaction) throws BranchCustomerNotExists {
+        getCustomer(customer).addTransaction(transaction);
+    }
 
+    private Customer getCustomer(Customer customer) throws BranchCustomerNotExists {
+        int index = customers.indexOf(customer);
+
+        if (-1 == index) {
+            throw new BranchCustomerNotExists(customer.toString());
+        }
+
+        return customers.get(index);
+    }
+
+    Customer getCustomerData(Customer customer) throws BranchCustomerNotExists {
+        return getCustomer(customer).makeCopy();
     }
 }

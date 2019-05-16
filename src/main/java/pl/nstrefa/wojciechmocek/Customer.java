@@ -22,12 +22,30 @@ final public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return name.equals(customer.name) &&
-                transactions.equals(customer.transactions);
+        return name.equals(customer.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, transactions);
+        return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    void addTransaction(double transaction) {
+        transactions.add(transaction);
+    }
+
+    List<Double> getTransactions() {
+        return new ArrayList<>(transactions);
+    }
+
+    Customer makeCopy() {
+        Customer copy = new Customer(this.name);
+        copy.transactions = this.getTransactions();
+        return copy;
     }
 }
