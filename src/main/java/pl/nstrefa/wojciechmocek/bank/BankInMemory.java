@@ -17,16 +17,24 @@ class BankInMemory implements Bank {
     }
 
     public void createAccount(String branchName, String customerName, double transaction)
-            throws CustomerAccountAlreadyCreatedException {
+        throws CustomerAccountAlreadyCreatedException, BranchNotExistsException {
 
-        branchList.get(branchName).createAccount(customerName, transaction);
+        getBranch(branchName).createAccount(customerName, transaction);
     }
 
-    public List<Double> getCustomerTransactions(String branchName, String customerName) throws CustomerNotExistsException {
-        return branchList.get(branchName).getCustomerTransactions(customerName);
+    public List<Double> getCustomerTransactions(String branchName, String customerName) throws CustomerNotExistsException, BranchNotExistsException {
+        return getBranch(branchName).getCustomerTransactions(customerName);
     }
 
-    public void addTransaction(String branchName, String customerName, double transaction) throws CustomerNotExistsException {
-        branchList.get(branchName).addTransactionToCustomer(customerName, transaction);
+    public void addTransaction(String branchName, String customerName, double transaction) throws CustomerNotExistsException, BranchNotExistsException {
+        getBranch(branchName).addTransactionToCustomer(customerName, transaction);
+    }
+
+    private Branch getBranch(String branchName) throws BranchNotExistsException {
+        if (!branchList.containsKey(branchName)) {
+            throw new BranchNotExistsException("Branch " + branchName + " does not exist");
+        }
+
+        return branchList.get(branchName);
     }
 }

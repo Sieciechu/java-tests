@@ -4,7 +4,10 @@ import java.util.List;
 
 public interface Bank {
     void createBranch(String branchName);
-    void createAccount(String branchName, String customerName, double transaction) throws CustomerAccountAlreadyCreatedException;
-    List<Double> getCustomerTransactions(String branchName, String customerName) throws CustomerNotExistsException;
-    void addTransaction(String branchName, String customerName, double transaction) throws CustomerNotExistsException;
+
+    void createAccount(String branchName, String customerName, double transaction) throws CustomerAccountAlreadyCreatedException, BranchNotExistsException;
+
+    List<Double> getCustomerTransactions(String branchName, String customerName) throws CustomerNotExistsException, BranchNotExistsException;
+
+    void addTransaction(String branchName, String customerName, double transaction) throws CustomerNotExistsException, BranchNotExistsException;
 }

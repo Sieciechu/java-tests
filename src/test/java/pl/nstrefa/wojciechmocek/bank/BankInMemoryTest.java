@@ -24,7 +24,7 @@ class BankInMemoryTest {
     }
 
     @Test
-    void whenCreateNewAccountThenItIsCreated() throws CustomerAccountAlreadyCreatedException, CustomerNotExistsException {
+    void whenCreateNewAccountThenItIsCreated() throws CustomerAccountAlreadyCreatedException, CustomerNotExistsException, BranchNotExistsException {
         // given
         BankInMemory bank = new BankInMemory();
         bank.createBranch("PL");
@@ -56,7 +56,7 @@ class BankInMemoryTest {
 
     @Test
     void whenAddTransactionToCustomerThenHeHasNewTransaction()
-            throws CustomerAccountAlreadyCreatedException, CustomerNotExistsException {
+        throws CustomerAccountAlreadyCreatedException, CustomerNotExistsException, BranchNotExistsException {
 
         // given
         BankInMemory bank = new BankInMemory();
@@ -75,7 +75,7 @@ class BankInMemoryTest {
     }
 
     @Test
-    void itShouldBeNotPossibleToAddTransactionForNonExistingCustomer() throws CustomerAccountAlreadyCreatedException {
+    void itShouldBeNotPossibleToAddTransactionForNonExistingCustomer() throws CustomerAccountAlreadyCreatedException, BranchNotExistsException {
         // given
         BankInMemory bank = new BankInMemory();
         bank.createBranch("PL");
@@ -90,13 +90,29 @@ class BankInMemoryTest {
 
     @Test
     void itShouldBeNotPossibleToCreateAccountForNotExistingBranch() {
-        fail();
+        // given
+        BankInMemory bank = new BankInMemory();
+        bank.createBranch("PL");
+
+        // when-then
+        assertThrows(
+            BranchNotExistsException.class,
+            () -> bank.createAccount("NN", "John", 123.16)
+
+        );
     }
 
     @Test
-    void itShoulBeNotPossibleToAddTransactionForNotExistingBranch() {
-        fail();
+    void itShoulBeNotPossibleToAddTransactionForNotExistingBranch() throws CustomerAccountAlreadyCreatedException, BranchNotExistsException {
+        // given
+        BankInMemory bank = new BankInMemory();
+        bank.createBranch("PL");
+        bank.createAccount("PL", "John", 123.16);
+
+        // when-then
+        assertThrows(
+            BranchNotExistsException.class,
+            () -> bank.addTransaction("NN", "John", 11.0)
+        );
     }
-
-
 }
