@@ -4,6 +4,6 @@ public class CustomerAccountAlreadyCreatedException extends Exception {
     private final String customerName;
 
     CustomerAccountAlreadyCreatedException(Customer customer) {
-        this.customerName = customer.toString();
+        this.customerName = customer.getName();
     }
 }

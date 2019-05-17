@@ -30,8 +30,7 @@ final class Customer {
         return Objects.hash(name);
     }
 
-    @Override
-    public String toString() {
+    public String getName() {
         return name;
     }
 
