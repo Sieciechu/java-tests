@@ -41,7 +41,7 @@ class BranchTest {
 
     @Test
     void whenAddTransactionsToCustomerThenCustomerHasNewTransactions()
-            throws BranchCustomerNotExistsException, CustomerAccountAlreadyCreatedException {
+            throws CustomerNotExistsException, CustomerAccountAlreadyCreatedException {
 
         // given
         Branch branch = new Branch("some name");
@@ -59,7 +59,7 @@ class BranchTest {
 
     @Test
     void itShouldBeImpossibleToAddTransactionToCustomerNotAssignedToBranch()
-            throws CustomerAccountAlreadyCreatedException, BranchCustomerNotExistsException {
+            throws CustomerAccountAlreadyCreatedException, CustomerNotExistsException {
 
         // given
         Branch branch = new Branch("some name");
@@ -69,7 +69,7 @@ class BranchTest {
 
         // when-then
         assertThrows(
-            BranchCustomerNotExistsException.class,
+            CustomerNotExistsException.class,
             () -> branch.addTransactionToCustomer("Some other customer", 3.1)
         );
     }

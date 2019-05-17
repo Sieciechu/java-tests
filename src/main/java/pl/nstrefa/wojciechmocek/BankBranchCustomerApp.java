@@ -2,7 +2,7 @@ package pl.nstrefa.wojciechmocek;
 
 import pl.nstrefa.wojciechmocek.bank.Bank;
 import pl.nstrefa.wojciechmocek.bank.BankFactory;
-import pl.nstrefa.wojciechmocek.bank.BranchCustomerNotExistsException;
+import pl.nstrefa.wojciechmocek.bank.CustomerNotExistsException;
 import pl.nstrefa.wojciechmocek.bank.CustomerAccountAlreadyCreatedException;
 
 public class BankBranchCustomerApp {
@@ -31,7 +31,7 @@ public class BankBranchCustomerApp {
                 customer,
                 bank.getCustomerTransactions(branchName, customer)
             );
-        } catch (CustomerAccountAlreadyCreatedException|BranchCustomerNotExistsException e) {
+        } catch (CustomerAccountAlreadyCreatedException| CustomerNotExistsException e) {
             e.printStackTrace();
         }
     }

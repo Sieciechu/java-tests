@@ -24,7 +24,7 @@ class BankInMemoryTest {
     }
 
     @Test
-    void whenCreateNewAccountThenItIsCreated() throws CustomerAccountAlreadyCreatedException, BranchCustomerNotExistsException {
+    void whenCreateNewAccountThenItIsCreated() throws CustomerAccountAlreadyCreatedException, CustomerNotExistsException {
         // given
         BankInMemory bank = new BankInMemory();
         bank.createBranch("PL");
@@ -56,7 +56,7 @@ class BankInMemoryTest {
 
     @Test
     void whenAddTransactionToCustomerThenHeHasNewTransaction()
-            throws CustomerAccountAlreadyCreatedException, BranchCustomerNotExistsException {
+            throws CustomerAccountAlreadyCreatedException, CustomerNotExistsException {
 
         // given
         BankInMemory bank = new BankInMemory();
@@ -83,7 +83,7 @@ class BankInMemoryTest {
 
         // when-then
         assertThrows(
-            BranchCustomerNotExistsException.class,
+            CustomerNotExistsException.class,
             () -> bank.addTransaction("PL", "Max", 11.0)
         );
     }

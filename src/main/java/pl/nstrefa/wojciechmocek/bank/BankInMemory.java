@@ -22,11 +22,11 @@ class BankInMemory implements Bank {
         branchList.get(branchName).createAccount(customerName, transaction);
     }
 
-    public List<Double> getCustomerTransactions(String branchName, String customerName) throws BranchCustomerNotExistsException {
+    public List<Double> getCustomerTransactions(String branchName, String customerName) throws CustomerNotExistsException {
         return branchList.get(branchName).getCustomerTransactions(customerName);
     }
 
-    public void addTransaction(String branchName, String customerName, double transaction) throws BranchCustomerNotExistsException {
+    public void addTransaction(String branchName, String customerName, double transaction) throws CustomerNotExistsException {
         branchList.get(branchName).addTransactionToCustomer(customerName, transaction);
     }
 }

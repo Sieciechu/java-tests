@@ -1,9 +1,9 @@
 package pl.nstrefa.wojciechmocek.bank;
 
-public class BranchCustomerNotExistsException extends Exception {
+public class CustomerNotExistsException extends Exception {
     private final String customerName;
 
-    BranchCustomerNotExistsException(Customer customer) {
+    CustomerNotExistsException(Customer customer) {
         this.customerName = customer.toString();
     }
 }

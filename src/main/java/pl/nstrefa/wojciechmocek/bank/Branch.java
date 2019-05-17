@@ -32,22 +32,22 @@ class Branch {
         customers.add(branchCustomer);
     }
 
-    void addTransactionToCustomer(String customerName, double transaction) throws BranchCustomerNotExistsException {
+    void addTransactionToCustomer(String customerName, double transaction) throws CustomerNotExistsException {
         getCustomer(customerName).addTransaction(transaction);
     }
 
-    private Customer getCustomer(String customerName) throws BranchCustomerNotExistsException {
+    private Customer getCustomer(String customerName) throws CustomerNotExistsException {
         Customer customer = new Customer(customerName);
         int index = customers.indexOf(customer);
 
         if (-1 == index) {
-            throw new BranchCustomerNotExistsException(customer);
+            throw new CustomerNotExistsException(customer);
         }
 
         return customers.get(index);
     }
 
-    List<Double> getCustomerTransactions(String customerName) throws BranchCustomerNotExistsException {
+    List<Double> getCustomerTransactions(String customerName) throws CustomerNotExistsException {
         return getCustomer(customerName).getTransactions();
     }
 }
