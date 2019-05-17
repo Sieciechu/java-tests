@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BankInMemoryTest {
     @Test
@@ -88,4 +87,16 @@ class BankInMemoryTest {
             () -> bank.addTransaction("PL", "Max", 11.0)
         );
     }
+
+    @Test
+    void itShouldBeNotPossibleToCreateAccountForNotExistingBranch() {
+        fail();
+    }
+
+    @Test
+    void itShoulBeNotPossibleToAddTransactionForNotExistingBranch() {
+        fail();
+    }
+
+
 }
