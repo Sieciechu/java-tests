@@ -1,6 +1,7 @@
 package pl.nstrefa.wojciechmocek;
 
 import pl.nstrefa.wojciechmocek.bank.*;
+import pl.nstrefa.wojciechmocek.bank.Exception;
 
 public class BankBranchCustomerApp {
     public static void main(String[] args) {
@@ -28,7 +29,7 @@ public class BankBranchCustomerApp {
                 customer,
                 bank.getCustomerTransactions(branchName, customer)
             );
-        } catch (CustomerAccountAlreadyCreatedException | CustomerNotExistsException | BranchNotExistsException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

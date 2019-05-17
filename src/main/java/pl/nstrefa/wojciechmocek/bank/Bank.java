@@ -5,9 +5,9 @@ import java.util.List;
 public interface Bank {
     void createBranch(String branchName);
 
-    void createAccount(String branchName, String customerName, double transaction) throws CustomerAccountAlreadyCreatedException, BranchNotExistsException;
+    void createAccount(String branchName, String customerName, double transaction) throws Exception;
 
-    List<Double> getCustomerTransactions(String branchName, String customerName) throws CustomerNotExistsException, BranchNotExistsException;
+    List<Double> getCustomerTransactions(String branchName, String customerName) throws Exception;
 
-    void addTransaction(String branchName, String customerName, double transaction) throws CustomerNotExistsException, BranchNotExistsException;
+    void addTransaction(String branchName, String customerName, double transaction) throws Exception;
 }
