@@ -4,7 +4,6 @@ import pl.nstrefa.wojciechmocek.bank.Bank;
 import pl.nstrefa.wojciechmocek.bank.Customer;
 import pl.nstrefa.wojciechmocek.bank.Exception;
 
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -13,31 +12,7 @@ public class CliController implements Controller {
     private Scanner sc;
     private Bank bank;
 
-    private enum MenuOption {
-        LIST_BRANCHES(1), CREATE_BRANCH(2), CREATE_CUSTOMER(3), ADD_TRANSACTION(4),
-        EXIT(5);
-
-        private final int value;
-
-        MenuOption(int value) {
-            this.value = value;
-        }
-
-        public int getValue() {
-            return value;
-        }
-
-        public static MenuOption fromInt(int i) {
-            for (MenuOption option : MenuOption.values()) {
-                if (option.getValue() == i) {
-                    return option;
-                }
-            }
-            throw new IllegalArgumentException("There is no such option");
-        }
-    }
-
-    public CliController(Bank bank) {
+    CliController(Bank bank) {
         this.bank = bank;
         this.sc = new Scanner(System.in);
     }
@@ -62,6 +37,9 @@ public class CliController implements Controller {
                     case ADD_TRANSACTION:
                         addTransaction();
                         break;
+                    case PRINT_ALL_CUSTOMERS:
+                        printAllCustomers();
+                        break;
                     case EXIT:
                         System.exit(0);
 
@@ -74,6 +52,19 @@ public class CliController implements Controller {
         } while (MenuOption.EXIT != chosenOption);
 
 
+    }
+
+    private void printAllCustomers() throws Exception {
+        System.out.print("Printing all customers\n\n");
+        for (String branchName : bank.getBranches()) {
+            printBranchCustomers(branchName);
+            System.out.println();
+        }
+    }
+
+    private void printBranchCustomers(String branchName) throws Exception {
+        System.out.println("Branch's " + branchName + " customer list:");
+        bank.getBranchCustomerList(branchName).forEach(this::printCustomer);
     }
 
     public void addTransaction() {
@@ -113,15 +104,24 @@ public class CliController implements Controller {
         System.out.println("Transaction added");
     }
 
-    private void printBranchCustomers(String branchName) throws Exception {
-        System.out.println("Branch's customer list:");
-        bank.getBranchCustomerList(branchName).forEach(this::printCustomer);
+    public void printMenu() {
+        System.out.println(
+            "==============================================================\n" +
+                "Welcome to our banking system. What would you like to do?\n" +
+                "1. List bank branches\n" +
+                "2. Create new branch\n" +
+                "3. Create new customer for the branch\n" +
+                "4. Add transaction to a customer\n" +
+                "5. Print all customers\n" +
+                "6. Exit\n"
+        );
+        System.out.print("Type the number: ");
     }
 
     private void printCustomer(Customer c) {
         String data = "- " + c.getName() + ", transactions: "
             + c.getTransactions().stream()
-            .map(d -> String.valueOf(d))
+            .map(String::valueOf)
             .collect(Collectors.joining(", "));
         System.out.println(data);
     }
@@ -161,16 +161,27 @@ public class CliController implements Controller {
         System.out.println("Branch '" + branchName + "' created");
     }
 
-    public void printMenu() {
-        System.out.println(
-            "==============================================================\n" +
-                "Welcome to our banking system. What would you like to do?\n" +
-                "1. List bank branches\n" +
-                "2. Create new branch\n" +
-                "3. Create new customer for the branch\n" +
-                "4. Add transaction to a customer\n" +
-                "5. Exit\n"
-        );
-        System.out.print("Type the number: ");
+    private enum MenuOption {
+        LIST_BRANCHES(1), CREATE_BRANCH(2), CREATE_CUSTOMER(3), ADD_TRANSACTION(4),
+        PRINT_ALL_CUSTOMERS(5), EXIT(6);
+
+        private final int value;
+
+        MenuOption(int value) {
+            this.value = value;
+        }
+
+        public static MenuOption fromInt(int i) {
+            for (MenuOption option : MenuOption.values()) {
+                if (option.getValue() == i) {
+                    return option;
+                }
+            }
+            throw new IllegalArgumentException("There is no such option");
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 }
