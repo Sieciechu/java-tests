@@ -1,11 +1,25 @@
 package pl.nstrefa.wojciechmocek;
 
-import pl.nstrefa.wojciechmocek.bank.*;
+import pl.nstrefa.wojciechmocek.bank.Bank;
+import pl.nstrefa.wojciechmocek.bank.BankFactory;
 import pl.nstrefa.wojciechmocek.bank.Exception;
 
 public class BankBranchCustomerApp {
-    public static void main(String[] args) {
 
+    private Controller controller;
+
+    public BankBranchCustomerApp(Controller controller) {
+        this.controller = controller;
+    }
+
+    public static void main(String[] args) {
+        Bank bank = new BankFactory().make();
+        var app = new BankBranchCustomerApp(new CliController(bank));
+        app.controller.run();
+
+    }
+
+    private static void runUsingArgs(String[] args) {
         Bank bank = new BankFactory().make();
 
         String branchName = args[0];
