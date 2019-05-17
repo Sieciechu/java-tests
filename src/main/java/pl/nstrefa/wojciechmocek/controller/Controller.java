@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.controller;
 
 public interface Controller {
     void addTransaction();

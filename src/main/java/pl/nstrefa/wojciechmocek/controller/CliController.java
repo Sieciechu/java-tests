@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.controller;
 
 import pl.nstrefa.wojciechmocek.bank.Bank;
 import pl.nstrefa.wojciechmocek.bank.Customer;
@@ -12,7 +12,7 @@ public class CliController implements Controller {
     private Scanner sc;
     private Bank bank;
 
-    CliController(Bank bank) {
+    public CliController(Bank bank) {
         this.bank = bank;
         this.sc = new Scanner(System.in);
     }
@@ -113,7 +113,7 @@ public class CliController implements Controller {
                 "3. Create new customer for the branch\n" +
                 "4. Add transaction to a customer\n" +
                 "5. Print all customers\n" +
-                "6. Exit\n"
+                "0. Exit\n"
         );
         System.out.print("Type the number: ");
     }
@@ -163,7 +163,7 @@ public class CliController implements Controller {
 
     private enum MenuOption {
         LIST_BRANCHES(1), CREATE_BRANCH(2), CREATE_CUSTOMER(3), ADD_TRANSACTION(4),
-        PRINT_ALL_CUSTOMERS(5), EXIT(6);
+        PRINT_ALL_CUSTOMERS(5), EXIT(0);
 
         private final int value;
 
