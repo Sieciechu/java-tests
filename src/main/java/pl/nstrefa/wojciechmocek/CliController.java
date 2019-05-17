@@ -1,9 +1,12 @@
 package pl.nstrefa.wojciechmocek;
 
 import pl.nstrefa.wojciechmocek.bank.Bank;
+import pl.nstrefa.wojciechmocek.bank.Customer;
 import pl.nstrefa.wojciechmocek.bank.Exception;
 
+import java.util.Collections;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class CliController implements Controller {
 
@@ -81,6 +84,7 @@ public class CliController implements Controller {
             System.out.print("Please type branch name: ");
             String branchName = sc.nextLine();
 
+            printBranchCustomers(branchName);
             System.out.print("Please enter customer name: ");
             String customerName = sc.nextLine();
 
@@ -107,6 +111,19 @@ public class CliController implements Controller {
             System.out.println("Error occured, transaction not added");
         }
         System.out.println("Transaction added");
+    }
+
+    private void printBranchCustomers(String branchName) throws Exception {
+        System.out.println("Branch's customer list:");
+        bank.getBranchCustomerList(branchName).forEach(this::printCustomer);
+    }
+
+    private void printCustomer(Customer c) {
+        String data = "- " + c.getName() + ", transactions: "
+            + c.getTransactions().stream()
+            .map(d -> String.valueOf(d))
+            .collect(Collectors.joining(", "));
+        System.out.println(data);
     }
 
     public void createCustomer() {

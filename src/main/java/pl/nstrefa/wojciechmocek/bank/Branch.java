@@ -17,7 +17,7 @@ class Branch {
         return name;
     }
 
-    List<Customer> getCustomers() {
+    final List<Customer> getCustomers() {
         return new ArrayList<>(customers);
     }
 
@@ -47,7 +47,7 @@ class Branch {
         return customers.get(index);
     }
 
-    List<Double> getCustomerTransactions(String customerName) throws CustomerNotExistsException {
+    final List<Double> getCustomerTransactions(String customerName) throws CustomerNotExistsException {
         return getCustomer(customerName).getTransactions();
     }
 }

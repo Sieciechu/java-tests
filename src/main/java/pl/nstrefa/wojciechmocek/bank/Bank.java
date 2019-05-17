@@ -12,4 +12,6 @@ public interface Bank {
     void addTransaction(String branchName, String customerName, double transaction) throws Exception;
 
     String[] getBranches();
+
+    List<Customer> getBranchCustomerList(String branchName) throws Exception;
 }

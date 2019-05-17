@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
-final class Customer {
+public final class Customer {
 
     private String name;
     private List<Double> transactions;
@@ -38,7 +37,7 @@ final class Customer {
         transactions.add(transaction);
     }
 
-    List<Double> getTransactions() {
+    public final List<Double> getTransactions() {
         return new ArrayList<>(transactions);
     }
 }

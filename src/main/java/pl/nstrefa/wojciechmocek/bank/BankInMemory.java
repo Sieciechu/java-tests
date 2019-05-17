@@ -35,6 +35,11 @@ class BankInMemory implements Bank {
         return branchList.keySet().toArray(new String[branchList.keySet().size()]);
     }
 
+    @Override
+    public final List<Customer> getBranchCustomerList(String branchName) throws BranchNotExistsException {
+        return getBranch(branchName).getCustomers();
+    }
+
     private Branch getBranch(String branchName) throws BranchNotExistsException {
         if (!branchList.containsKey(branchName)) {
             throw new BranchNotExistsException("Branch " + branchName + " does not exist");
