@@ -3,6 +3,7 @@ package pl.nstrefa.wojciechmocek.bank;
 import lombok.NonNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,7 +38,11 @@ public class Customer {
         transactions.add(transaction);
     }
 
+    /**
+     *
+     * @return Unmodifiable list of transactions
+     */
     public List<Double> getTransactions() {
-        return new ArrayList<>(transactions);
+        return Collections.unmodifiableList(transactions);
     }
 }

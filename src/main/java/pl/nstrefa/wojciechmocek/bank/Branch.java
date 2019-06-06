@@ -3,6 +3,7 @@ package pl.nstrefa.wojciechmocek.bank;
 import lombok.NonNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Branch {
@@ -17,8 +18,12 @@ class Branch {
         return name;
     }
 
+    /**
+     *
+     * @return Unmodifiable list
+     */
     List<Customer> getCustomers() {
-        return new ArrayList<>(customers);
+        return Collections.unmodifiableList(customers);
     }
 
     void createAccount(String customerName, double transaction) throws CustomerAccountAlreadyCreatedException {
@@ -47,6 +52,12 @@ class Branch {
         return customers.get(index);
     }
 
+    /**
+     *
+     * @param customerName
+     * @return Unmodifiable list of transactions
+     * @throws CustomerNotExistsException
+     */
     List<Double> getCustomerTransactions(String customerName) throws CustomerNotExistsException {
         return getCustomer(customerName).getTransactions();
     }

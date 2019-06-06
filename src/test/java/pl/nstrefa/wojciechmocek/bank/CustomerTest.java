@@ -37,14 +37,14 @@ class CustomerTest {
         customer.addTransaction(1.0);
         customer.addTransaction(2.0);
 
-        // when
         List<Double> customerTransactionsCopy = customer.getTransactions();
-        customerTransactionsCopy.add(3.0);
 
-        // then
-        assertNotSame(customer.getTransactions(), customerTransactionsCopy);
-        assertNotEquals(customer.getTransactions().size(), customerTransactionsCopy.size());
-        assertEquals(2, customer.getTransactions().size());
-        assertEquals(3, customerTransactionsCopy.size());
+        // when-then
+        assertThrows(
+            UnsupportedOperationException.class,
+            () -> customerTransactionsCopy.add(3.0)
+        );
+
+
     }
 }
