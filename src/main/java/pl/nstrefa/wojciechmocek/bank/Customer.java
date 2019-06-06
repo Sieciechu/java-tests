@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public final class Customer {
+public class Customer {
 
     private String name;
     private List<Double> transactions;
@@ -37,7 +37,7 @@ public final class Customer {
         transactions.add(transaction);
     }
 
-    public final List<Double> getTransactions() {
+    public List<Double> getTransactions() {
         return new ArrayList<>(transactions);
     }
 }

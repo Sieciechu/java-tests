@@ -36,7 +36,7 @@ class BankInMemory implements Bank {
     }
 
     @Override
-    public final List<Customer> getBranchCustomerList(String branchName) throws BranchNotExistsException {
+    public List<Customer> getBranchCustomerList(String branchName) throws BranchNotExistsException {
         return getBranch(branchName).getCustomers();
     }
 
