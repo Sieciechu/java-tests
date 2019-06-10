@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.bankapp;
 
 import org.junit.jupiter.api.Test;
 

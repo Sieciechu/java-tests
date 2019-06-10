@@ -1,8 +1,8 @@
-package pl.nstrefa.wojciechmocek.controller;
+package pl.nstrefa.wojciechmocek.bankapp.controller;
 
-import pl.nstrefa.wojciechmocek.bank.Bank;
-import pl.nstrefa.wojciechmocek.bank.Customer;
-import pl.nstrefa.wojciechmocek.bank.Exception;
+import pl.nstrefa.wojciechmocek.bankapp.bank.Bank;
+import pl.nstrefa.wojciechmocek.bankapp.bank.Customer;
+import pl.nstrefa.wojciechmocek.bankapp.bank.Exception;
 
 import java.util.Scanner;
 import java.util.stream.Collectors;

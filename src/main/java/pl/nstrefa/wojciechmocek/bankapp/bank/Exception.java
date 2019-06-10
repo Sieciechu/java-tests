@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek.bank;
+package pl.nstrefa.wojciechmocek.bankapp.bank;
 
 public class Exception extends java.lang.Exception {
     public Exception() {

@@ -1,9 +1,9 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.bankapp;
 
-import pl.nstrefa.wojciechmocek.bank.Bank;
-import pl.nstrefa.wojciechmocek.bank.BankFactory;
-import pl.nstrefa.wojciechmocek.bank.Exception;
-import pl.nstrefa.wojciechmocek.controller.CliController;
+import pl.nstrefa.wojciechmocek.bankapp.bank.Bank;
+import pl.nstrefa.wojciechmocek.bankapp.bank.BankFactory;
+import pl.nstrefa.wojciechmocek.bankapp.bank.Exception;
+import pl.nstrefa.wojciechmocek.bankapp.controller.CliController;
 
 public class BankBranchCustomerApp {
 

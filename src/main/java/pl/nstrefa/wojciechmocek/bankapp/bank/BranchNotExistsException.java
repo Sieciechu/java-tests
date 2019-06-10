@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek.bank;
+package pl.nstrefa.wojciechmocek.bankapp.bank;
 
 public class BranchNotExistsException extends Exception {
     public BranchNotExistsException(String message) {

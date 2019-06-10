@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek.bank;
+package pl.nstrefa.wojciechmocek.bankapp.bank;
 
 import java.util.ArrayList;
 import java.util.HashMap;

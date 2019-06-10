@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek.controller;
+package pl.nstrefa.wojciechmocek.bankapp.controller;
 
 public interface Controller {
     void addTransaction();

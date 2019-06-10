@@ -18,7 +18,7 @@ plugins {
 
 // Define the main class for the application
 group 'pl.nstrefa.wojciechmocek'
-mainClassName = 'pl.nstrefa.wojciechmocek.BankBranchCustomerApp'
+mainClassName = 'pl.nstrefa.wojciechmocek.bankapp.BankBranchCustomerApp'
 
 repositories {
     // Use jcenter for resolving your dependencies.
@@ -45,6 +45,6 @@ test {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'pl.nstrefa.wojciechmocek.BankBranchCustomerApp'
+        attributes 'Main-Class' : 'pl.nstrefa.wojciechmocek.bankapp.BankBranchCustomerApp'
     }
 }
