@@ -1,4 +1,4 @@
-package pl.nstrefa.wojciechmocek;
+package pl.nstrefa.wojciechmocek.app;
 
 import java.util.Collections;
 import java.util.Comparator;
