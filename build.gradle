@@ -31,9 +31,15 @@ dependencies {
 }
 
 // Define the main class for the application
+group 'pl.nstrefa.wojciechmocek'
 mainClassName = 'pl.nstrefa.wojciechmocek.App'
 
 test {
     useJUnitPlatform()
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class' : 'pl.nstrefa.wojciechmocek.App'
+    }
+}
