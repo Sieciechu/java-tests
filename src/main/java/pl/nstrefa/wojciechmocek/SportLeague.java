@@ -8,12 +8,7 @@ import java.util.TreeSet;
 public class SportLeague<T extends Team> {
 
     private String name;
-    private Set<T> teams = new TreeSet<>(new Comparator<T>() {
-        @Override
-        public int compare(T o1, T o2) {
-            return o1.name.compareTo(o2.name);
-        }
-    });
+    private Set<T> teams = new TreeSet<>(Comparator.comparing(o -> o.name));
 
     public SportLeague(String name) {
         this.name = name;
@@ -26,6 +21,4 @@ public class SportLeague<T extends Team> {
     public Set<T> getUnmodifiableTeams() {
         return Collections.unmodifiableSet(teams);
     }
-
-
 }
