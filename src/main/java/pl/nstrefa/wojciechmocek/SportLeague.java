@@ -21,4 +21,8 @@ public class SportLeague<T extends Team> {
     public Set<T> getUnmodifiableTeams() {
         return Collections.unmodifiableSet(teams);
     }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -3,12 +3,50 @@
  */
 package pl.nstrefa.wojciechmocek;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Set;
+
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
+
+    BufferedWriter writer;
+
+    public App(BufferedWriter writer) {
+        this.writer = writer;
+    }
+
+    void run() {
+        SportLeague<FootballTeam> footballLeague = new SportLeague<>("Premier league");
+        footballLeague.store(new FootballTeam("Manchaster Utd"));
+        footballLeague.store(new FootballTeam("Liverpool"));
+        footballLeague.store(new FootballTeam("Totenham"));
+        footballLeague.store(new FootballTeam("London City"));
+
+        Set<FootballTeam> teams = footballLeague.getUnmodifiableTeams();
+
+        try {
+            writer.write("Our league name is '" + footballLeague.getName() + "'. Below are teams:");
+            writer.newLine();
+
+            teams.forEach(team -> {
+                try {
+                    writer.write(team.name);
+                    writer.newLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        var app = new App(new BufferedWriter(new PrintWriter(System.out)));
+        app.run();
     }
 }
