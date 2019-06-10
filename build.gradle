@@ -25,8 +25,15 @@ dependencies {
     implementation 'com.google.guava:guava:27.0.1-jre'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.0-M1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.5.0-M1'
+
 }
 
 // Define the main class for the application
 mainClassName = 'pl.nstrefa.wojciechmocek.App'
+
+test {
+    useJUnitPlatform()
+}
+
