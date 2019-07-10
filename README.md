@@ -14,8 +14,8 @@ Build docker image:
 `$ docker image build -t bank-app .`
 
 Run docker image:
-`$ docker container run --rm bank-app`
+`$ docker container run --rm -it bank-app`
 
 Example:
 
-`$ docker container run --rm bank-app`
+`$ docker container run --rm -it bank-app`
