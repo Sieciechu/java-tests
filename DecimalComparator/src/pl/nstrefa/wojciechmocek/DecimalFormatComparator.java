@@ -15,3 +15,4 @@ public class DecimalFormatComparator implements DecimalComparator {
         return Double.parseDouble(decimalFormat.format(a)) == Double.parseDouble(decimalFormat.format(b));
     }
 }
+

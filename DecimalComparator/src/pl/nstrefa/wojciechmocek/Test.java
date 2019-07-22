@@ -36,3 +36,4 @@ public class Test {
         System.out.println("All assertions for " + comparator.getClass().getName() + " are met");
     }
 }
+
