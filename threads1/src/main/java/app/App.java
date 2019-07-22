@@ -9,7 +9,14 @@ public class App {
         t2.start();
 
         System.out.println("something else");
-        
+
+        new Thread() {
+            @Override
+            public void run() {
+                System.out.println("3rd thread test");
+            }
+        }.start();
+
     }
 
     public static void main(String[] args) {
