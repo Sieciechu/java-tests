@@ -10,20 +10,35 @@ public class App {
         System.out.println("10");
 
 
-        new Thread(() -> System.out.println("3rd thread test")).start();
+        Thread tA = new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            ;
+            System.out.println("3rd thread test " + Thread.currentThread().getName());
+        });
+        tA.start();
         System.out.println("20");
+        Thread runnable = new Thread(new Runnable(){
+            @Override
+            public void run(){
+                System.out.println("anonymous runnable1 " + Thread.currentThread().getName());
+                try {
+                    tA.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("anonymous runnable2 " + Thread.currentThread().getName());
+            }
+        });
+        runnable.setName("New name of runnable");
+
+        runnable.start();
 
         new Thread(new MyThread2()).start();
         System.out.println("30");
-
-        Thread runnable = new Thread(new java.lang.Runnable(){
-            @Override
-            public void run(){
-                System.out.println("anonymous runnable");
-            }
-        });
-
-        runnable.start();
         System.out.println("40");
 
     }
